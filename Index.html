@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Никах Ильназа и Азалии</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Montserrat:wght@200;300;400&family=Playfair+Display:italic&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg: #f9f6f2; --text: #4a3f35; --gold: #c5a67c; }
+        body, html { margin: 0; padding: 0; background-color: var(--bg); color: var(--text); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+        
+        .container { max-width: 480px; margin: 0 auto; min-height: 100vh; background: var(--bg); position: relative; padding: 40px 20px; box-sizing: border-box; }
+        
+        /* Фоновая тень листвы */
+        .container::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://img.freepik.com/free-photo/shadow-leaves-overlay-on-beige-background_53876-127546.jpg');
+            background-size: cover; opacity: 0.12; pointer-events: none; z-index: 1;
+        }
+
+        /* Арка-орнамент как на фото */
+        .arch-ornament {
+            width: 100%; height: 150px;
+            background: url('https://cdn-icons-png.flaticon.com/512/10305/10305943.png') no-repeat center bottom;
+            background-size: 200px; opacity: 0.2; margin-bottom: 20px;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1.2s ease-out; position: relative; z-index: 2; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .names { text-align: center; margin: 30px 0; }
+        h1 { font-family: 'Cinzel', serif; font-size: 2.2rem; letter-spacing: 6px; text-transform: uppercase; margin: 0; font-weight: 200; }
+        .ampersand { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.5rem; color: var(--gold); }
+
+        .invitation-msg { text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; margin: 40px 0; line-height: 1.6; }
+
+        .calendar-box { margin: 40px 0; text-align: center; background: rgba(255,255,255,0.4); padding: 20px; border-radius: 20px; }
+        .month { font-family: 'Cinzel', serif; letter-spacing: 3px; margin-bottom: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; max-width: 280px; margin: 0 auto; }
+        .day { font-size: 0.8rem; padding: 5px; position: relative; }
+        .day-n { color: var(--gold); font-weight: bold; font-size: 0.7rem; }
+        
+        .heart::after {
+            content: "❤"; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); color: var(--gold); font-size: 2rem; opacity: 0.3;
+        }
+
+        .info { text-align: center; margin: 40px 0; padding: 25px 0; border-top: 0.5px solid rgba(197, 166, 124, 0.2); border-bottom: 0.5px solid rgba(197, 166, 124, 0.2); }
+        .dress-code { text-align: center; margin-top: 50px; padding-bottom: 60px; }
+        .dress-code h2 { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 4px; color: var(--gold); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="arch-ornament"></div>
+    
+    <div class="names reveal">
+        <h1>Ильназ</h1>
+        <div class="ampersand">&</div>
+        <h1>Азалия</h1>
+    </div>
+
+    <div class="invitation-msg reveal">
+        Дорогие гости!<br>
+        Приглашаем вас на наш Никах
+    </div>
+
+    <div class="calendar-box reveal">
+        <div class="month">Июнь 2026</div>
+        <div class="grid">
+            <div class="day-n">ПН</div><div class="day-n">ВТ</div><div class="day-n">СР</div><div class="day-n">ЧТ</div><div class="day-n">ПТ</div><div class="day-n">СБ</div><div class="day-n">ВС</div>
+            <div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day">4</div><div class="day">5</div><div class="day">6</div><div class="day">7</div>
+            <div class="day">8</div><div class="day">9</div><div class="day">10</div>
+            <div class="day heart">11</div>
+            <div class="day">12</div><div class="day">13</div><div class="day">14</div>
+            <div class="day">15</div><div class="day">16</div><div class="day">17</div><div class="day">18</div><div class="day">19</div><div class="day">20</div><div class="day">21</div>
+            <div class="day">22</div><div class="day">23</div><div class="day">24</div><div class="day">25</div><div class="day">26</div><div class="day">27</div><div class="day">28</div>
+            <div class="day">29</div><div class="day">30</div>
+        </div>
+    </div>
+
+    <div class="info reveal">
+        <p style="letter-spacing: 2px; font-size: 0.8rem;">КАЗАНЬ</p>
+        <p style="font-weight: 400; margin: 10px 0; font-size: 1.2rem;">МЕЧЕТЬ «ИРЕК»</p>
+        <p style="font-size: 1.1rem; color: var(--gold);">Начало в 17:00</p>
+    </div>
+
+    <div class="dress-code reveal">
+        <h2>DRESS CODE</h2>
+        <p style="font-weight: 200; font-size: 0.9rem;">Мусульманская закрытая одежда<br>в бежевых и светлых тонах</p>
+    </div>
+</div>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
