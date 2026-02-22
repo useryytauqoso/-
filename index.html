@@ -4,141 +4,198 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Никах Ильназа и Азалии</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --blue-dark: #4a6572;
-            --gold-border: #c7b299;
-            --bg-overlay: rgba(255, 255, 255, 0.85);
+            /* Современная премиальная палитра */
+            --primary-dark: #0f2027; /* Глубокий темный */
+            --secondary-blue: #203a43; /* Сапфировый */
+            --accent-gold: #d4af37;    /* Благородное золото */
+            --accent-cream: #f8f3e8;   /* Кремовый текст */
+            --glass-bg: rgba(248, 243, 232, 0.90); /* Цвет карточек */
         }
 
         body, html {
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', sans-serif;
-            color: var(--blue-dark);
-            /* Заменил на работающий фон с мечетью (Unsplash) */
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        url('https://images.unsplash.com/photo-1590075865003-e48267df5574?q=80&w=1000') no-repeat center center fixed;
-            background-size: cover;
+            color: var(--secondary-blue);
+            /* СОВРЕМЕННЫЙ ИСЛАМСКИЙ ФОН (CSS-паттерн, не сломается) */
+            background: 
+                linear-gradient(135deg, rgba(15, 32, 39, 0.9), rgba(32, 58, 67, 0.85), rgba(44, 83, 100, 0.9)),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 30px 20px;
             box-sizing: border-box;
         }
 
         .container {
             width: 100%;
-            max-width: 450px;
+            max-width: 420px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 25px;
+            z-index: 1;
         }
 
+        /* Эффект матового стекла */
         .card {
-            background-color: var(--bg-overlay);
-            border-radius: 25px;
-            padding: 35px 20px;
+            background-color: var(--glass-bg);
+            border-radius: 20px;
+            padding: 40px 25px;
             text-align: center;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            backdrop-filter: blur(10px);
-            overflow: hidden; /* Чтобы цветы не вылезали за края */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
         }
 
+        /* Тонкая золотая рамка внутри */
         .card::after {
             content: '';
             position: absolute;
-            top: 12px;
-            left: 12px;
-            right: 12px;
-            bottom: 12px;
-            border: 1px solid var(--gold-border);
-            border-radius: 20px;
+            top: 15px; left: 15px; right: 15px; bottom: 15px;
+            border: 1px solid var(--accent-gold);
+            border-radius: 15px;
             pointer-events: none;
-            opacity: 0.5;
+            opacity: 0.4;
         }
 
-        /* Исправленный блок с цветами */
-        .floral {
-            position: absolute;
-            top: -10px; 
-            left: 0; 
-            width: 100%; 
-            height: 80px;
-            background: url('https://www.transparenttextures.com/patterns/floral-paper.png'); /* Ненавязчивый паттерн */
-            opacity: 0.2;
-            z-index: 0;
+        /* Иконка Бисмилля в начале */
+        .bismillah-icon {
+            width: 120px;
+            opacity: 0.8;
+            margin-bottom: 15px;
+            fill: var(--secondary-blue);
         }
 
-        .content { position: relative; z-index: 1; }
-
-        h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.3rem; margin: 10px 0; font-weight: 500; }
-        h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin: 15px 0; }
+        h1 {
+            font-family: 'Cinzel Decorative', cursive; /* Более торжественный шрифт */
+            font-size: 2.4rem;
+            margin: 15px 0;
+            color: var(--primary-dark);
+            line-height: 1.2;
+        }
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin: 20px 0 25px;
+            color: var(--secondary-blue);
+            font-weight: 600;
+        }
         
-        .date-top { font-size: 0.8rem; letter-spacing: 3px; opacity: 0.7; text-transform: uppercase; }
+        .date-top {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            color: var(--accent-gold);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
 
+        .invite-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--secondary-blue);
+            opacity: 0.9;
+        }
+
+        /* Календарь */
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
+            gap: 8px;
             max-width: 280px;
-            margin: 15px auto;
-            font-family: 'Cormorant Garamond', serif;
+            margin: 0 auto;
+            font-family: 'Montserrat', sans-serif;
         }
-        .day-name { font-size: 0.7rem; font-weight: bold; opacity: 0.5; }
-        .day { padding: 8px 0; font-size: 1rem; }
+        .day-name { font-size: 0.7rem; font-weight: 600; color: var(--accent-gold); opacity: 0.8; }
+        .day { padding: 8px 0; font-size: 0.95rem; font-weight: 500; }
         .active-day {
-            background: var(--gold-border);
-            color: white;
+            background: var(--accent-gold);
+            color: var(--accent-cream);
             border-radius: 50%;
             font-weight: bold;
-            position: relative;
-        }
-        .active-day::before {
-            content: '❤';
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--gold-border);
-            font-size: 0.8rem;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4);
         }
 
-        .info-row { margin: 15px 0; font-size: 0.95rem; }
-        .divider { height: 1px; background: var(--gold-border); opacity: 0.3; margin: 20px auto; width: 80%; }
+        /* Инфо блоки */
+        .info-row { margin: 20px 0; }
+        .info-label {
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 2.5px;
+            color: var(--accent-gold);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .info-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+        .info-sub { font-size: 0.9rem; opacity: 0.8; margin-top: 4px;}
 
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
+            opacity: 0.5;
+            margin: 25px auto;
+            width: 60%;
+        }
+
+        /* Современная кнопка */
         .btn {
-            background: #5a7d8c;
-            color: white;
+            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-dark));
+            color: var(--accent-cream);
             border: none;
-            padding: 16px 0;
-            border-radius: 30px;
-            width: 85%;
+            padding: 18px 0;
+            border-radius: 50px;
+            width: 100%;
             font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-size: 0.75rem;
-            font-weight: 600;
+            font-size: 0.8rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: 0.3s;
-            margin-top: 10px;
+            box-shadow: 0 10px 20px rgba(32, 58, 67, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        .btn:hover { background: #4a6572; transform: translateY(-2px); }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(32, 58, 67, 0.4);
+            background: linear-gradient(135deg, var(--accent-gold), var(--secondary-blue));
+        }
+        .btn:active { transform: translateY(-1px); }
     </style>
 </head>
 <body>
 
 <div class="container">
+
     <div class="card">
-        <div class="floral"></div>
+        <svg class="bismillah-icon" viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg">
+         <path d="M228.5 51.6c-3.6-2.1-8-1-10.3 2.4-2.4 3.6-1.4 8.5 2.1 10.9 11.5 7.7 16.1 21.8 11.7 35.8-4.1 13-16.7 21.5-30.7 20.8-8.5-0.4-16.3-4.7-21.2-11.7-4.9 7.1-12.7 11.4-21.3 11.7-14 0.7-26.6-7.9-30.7-20.8-4.4-14 0.2-28.1 11.7-35.8 3.6-2.4 4.5-7.3 2.1-10.9-2.4-3.6-7.2-4.6-10.8-2.2-17.9 11.9-24.9 33.8-17.7 55.4 6.6 19.9 26.4 33.2 47.8 32.2 14.1-0.7 26.9-8.2 34.7-19.9 7.7 11.7 20.5 19.2 34.7 19.9 21.5 1 41.2-12.3 47.8-32.2 7.3-21.6 0.3-43.5-17.6-55.4zM150 97.6c6.4 0.3 12.1-3.4 14.2-9.1 2.2-5.7 0-11.8-5.6-15.2-5.3-3.3-12-2.6-16.6 1.6-4.6 4.2-6.1 10.7-3.9 16.4 1.9 5 6.7 8.3 11.9 8.3v-2zM250 97.6c5.2 0 10-3.3 11.9-8.3 2.2-5.7 0.7-12.1-3.9-16.4-4.6-4.2-11.3-4.9-16.6-1.6-5.6 3.3-7.7 9.5-5.6 15.2 2 5.7 7.8 9.4 14.2 9.1z" fill="currentColor"/>
+        </svg>
+
         <div class="content">
             <div class="date-top">11 Июня 2026</div>
             <h1>Ильназ & Азалия</h1>
-            <p style="font-style: italic; font-size: 0.95rem; line-height: 1.5; margin-top: 15px;">
-                Приглашаем вас разделить с нами<br>радость нашего праздника Никах
+            <p class="invite-text">
+                С именем Всевышнего,<br>
+                приглашаем вас разделить радость<br>нашего праздника Никах
             </p>
         </div>
     </div>
@@ -148,9 +205,10 @@
             <h2>Июнь 2026</h2>
             <div class="calendar-grid">
                 <div class="day-name">ПН</div><div class="day-name">ВТ</div><div class="day-name">СР</div><div class="day-name">ЧТ</div><div class="day-name">ПТ</div><div class="day-name">СБ</div><div class="day-name">ВС</div>
+                <div class="day" style="opacity: 0.3">25</div><div class="day" style="opacity: 0.3">26</div><div class="day" style="opacity: 0.3">27</div><div class="day" style="opacity: 0.3">28</div><div class="day" style="opacity: 0.3">29</div><div class="day" style="opacity: 0.3">30</div><div class="day" style="opacity: 0.3">31</div>
                 <div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day">4</div><div class="day">5</div><div class="day">6</div><div class="day">7</div>
                 <div class="day">8</div><div class="day">9</div><div class="day">10</div>
-                <div class="day active-day">11</div>
+                <div class="active-day day">11</div>
                 <div class="day">12</div><div class="day">13</div><div class="day">14</div>
                 <div class="day">15</div><div class="day">16</div><div class="day">17</div><div class="day">18</div><div class="day">19</div><div class="day">20</div><div class="day">21</div>
             </div>
@@ -160,21 +218,22 @@
     <div class="card">
         <div class="content">
             <div class="info-row">
-                <div style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.6;">Место проведения</div>
-                <div style="font-size: 1.1rem; margin-top: 5px; font-weight: 500;">Мечеть «Ирек»</div>
-                <div style="font-size: 0.85rem; opacity: 0.8;">г. Казань, ул. Федосеевская, 5</div>
+                <div class="info-label">Место проведения</div>
+                <div class="info-value">Мечеть «Ирек»</div>
+                <div class="info-sub">г. Казань, ул. Федосеевская, 5</div>
             </div>
             
             <div class="divider"></div>
 
             <div class="info-row">
-                <div style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.6;">Dress Code</div>
-                <div style="font-size: 0.95rem; margin-top: 5px;">Мусульманская закрытая одежда</div>
+                <div class="info-label">Dress Code</div>
+                <div class="info-value" style="font-size: 1.1rem;">Мусульманская закрытая одежда</div>
             </div>
 
-            <button class="btn" onclick="alert('Спасибо! Мы ждем вас!')">Подтвердить присутствие</button>
+            <button class="btn" onclick="alert('Машаллах! Спасибо, мы ждем вас!')">Подтвердить присутствие</button>
         </div>
     </div>
+
 </div>
 
 </body>
