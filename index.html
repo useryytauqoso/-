@@ -9,6 +9,7 @@
         :root {
             --blue-dark: #4a6572;
             --gold-border: #c7b299;
+            --bg-overlay: rgba(255, 255, 255, 0.85);
         }
 
         body, html {
@@ -16,8 +17,9 @@
             padding: 0;
             font-family: 'Montserrat', sans-serif;
             color: var(--blue-dark);
-            /* ТВОЙ ФОН С МЕЧЕТЬЮ */
-            background: url('https://i.ibb.co/R4jWn996/image.png') no-repeat center center fixed;
+            /* Заменил на работающий фон с мечетью (Unsplash) */
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1590075865003-e48267df5574?q=80&w=1000') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
             display: flex;
@@ -36,16 +38,16 @@
         }
 
         .card {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: var(--bg-overlay);
             border-radius: 25px;
             padding: 35px 20px;
             text-align: center;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            backdrop-filter: blur(8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            overflow: hidden; /* Чтобы цветы не вылезали за края */
         }
 
-        /* Золотая рамка внутри */
         .card::after {
             content: '';
             position: absolute;
@@ -56,17 +58,19 @@
             border: 1px solid var(--gold-border);
             border-radius: 20px;
             pointer-events: none;
-            opacity: 0.6;
+            opacity: 0.5;
         }
 
-        /* Акварельные цветы сверху */
+        /* Исправленный блок с цветами */
         .floral {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 120px;
-            background: url('https://i.ibb.co/6R0pM8v3/blue-flowers.png') no-repeat top center;
-            background-size: contain;
+            top: -10px; 
+            left: 0; 
+            width: 100%; 
+            height: 80px;
+            background: url('https://www.transparenttextures.com/patterns/floral-paper.png'); /* Ненавязчивый паттерн */
+            opacity: 0.2;
             z-index: 0;
-            opacity: 0.7;
         }
 
         .content { position: relative; z-index: 1; }
@@ -76,7 +80,6 @@
         
         .date-top { font-size: 0.8rem; letter-spacing: 3px; opacity: 0.7; text-transform: uppercase; }
 
-        /* Календарь */
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
@@ -88,7 +91,7 @@
         .day-name { font-size: 0.7rem; font-weight: bold; opacity: 0.5; }
         .day { padding: 8px 0; font-size: 1rem; }
         .active-day {
-            background: #c7b299;
+            background: var(--gold-border);
             color: white;
             border-radius: 50%;
             font-weight: bold;
@@ -100,8 +103,8 @@
             top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            color: #c7b299;
-            font-size: 0.7rem;
+            color: var(--gold-border);
+            font-size: 0.8rem;
         }
 
         .info-row { margin: 15px 0; font-size: 0.95rem; }
@@ -120,21 +123,21 @@
             font-size: 0.75rem;
             font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(90, 125, 140, 0.3);
+            transition: 0.3s;
             margin-top: 10px;
         }
+        .btn:hover { background: #4a6572; transform: translateY(-2px); }
     </style>
 </head>
 <body>
 
 <div class="container">
-
     <div class="card">
         <div class="floral"></div>
         <div class="content">
             <div class="date-top">11 Июня 2026</div>
             <h1>Ильназ & Азалия</h1>
-            <p style="font-style: italic; font-size: 0.9rem; line-height: 1.5;">
+            <p style="font-style: italic; font-size: 0.95rem; line-height: 1.5; margin-top: 15px;">
                 Приглашаем вас разделить с нами<br>радость нашего праздника Никах
             </p>
         </div>
@@ -158,21 +161,20 @@
         <div class="content">
             <div class="info-row">
                 <div style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.6;">Место проведения</div>
-                <div style="font-size: 1.1rem; margin-top: 5px;">Мечеть «Ирек»</div>
-                <div style="font-size: 0.8rem; opacity: 0.8;">г. Казань, ул. Федосеевская, 5</div>
+                <div style="font-size: 1.1rem; margin-top: 5px; font-weight: 500;">Мечеть «Ирек»</div>
+                <div style="font-size: 0.85rem; opacity: 0.8;">г. Казань, ул. Федосеевская, 5</div>
             </div>
             
             <div class="divider"></div>
 
             <div class="info-row">
                 <div style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.6;">Dress Code</div>
-                <div style="font-size: 1rem; margin-top: 5px;">Мусульманская закрытая одежда</div>
+                <div style="font-size: 0.95rem; margin-top: 5px;">Мусульманская закрытая одежда</div>
             </div>
 
             <button class="btn" onclick="alert('Спасибо! Мы ждем вас!')">Подтвердить присутствие</button>
         </div>
     </div>
-
 </div>
 
 </body>
