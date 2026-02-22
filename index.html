@@ -7,26 +7,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Montserrat:wght@200;300;400&family=Playfair+Display:italic&display=swap" rel="stylesheet">
     <style>
         :root { 
-            --bg-light: #e3f2f5; 
-            --accent-blue: #a8d5e2;
-            --text-dark: #3e5055;
+            --bg-soft-blue: #f0f7f9; 
+            --main-blue: #c5e1e9;
+            --text-color: #5a6b71;
             --gold: #b2945b;
-            --deep-teal: #2d5a52;
+            --white: #ffffff;
         }
 
         body, html { 
             margin: 0; padding: 0; 
-            background-color: var(--bg-light); 
-            color: var(--text-dark); 
+            background-color: var(--bg-soft-blue); 
+            color: var(--text-color); 
             font-family: 'Montserrat', sans-serif;
             scroll-behavior: smooth;
         }
         
         .wrapper {
             max-width: 480px; margin: 0 auto; 
-            background: url('https://www.transparenttextures.com/patterns/arabesque.png'); /* Исламский узор */
+            /* Фон с нежными цветами */
+            background: linear-gradient(rgba(240, 247, 249, 0.8), rgba(240, 247, 249, 0.8)), 
+                        url('https://www.transparenttextures.com/patterns/floral-paper.png');
             min-height: 100vh; position: relative;
-            box-shadow: 0 0 30px rgba(0,0,0,0.05);
+            box-shadow: 0 0 30px rgba(0,0,0,0.03);
             padding-bottom: 80px;
         }
 
@@ -35,7 +37,6 @@
             width: 100%; height: 160px;
             background: url('https://png.pngtree.com/png-vector/20220909/ourmid/pngtree-wedding-flower-frame-watercolor-illustration-png-image_6144812.png') no-repeat center top;
             background-size: contain;
-            margin-bottom: 20px;
         }
 
         .reveal { opacity: 0; transform: translateY(30px); transition: all 1.2s ease-out; margin-bottom: 40px; }
@@ -43,40 +44,44 @@
 
         .section { padding: 40px 25px; text-align: center; }
 
-        .names-block h1 { font-family: 'Cinzel', serif; font-size: 1.8rem; letter-spacing: 4px; margin: 10px 0; font-weight: 300; }
+        .names-block h1 { font-family: 'Cinzel', serif; font-size: 1.8rem; letter-spacing: 4px; margin: 10px 0; font-weight: 300; color: var(--text-color); }
         .ampersand { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.2rem; color: var(--gold); }
 
-        /* Блок с Аятом */
+        /* Блок с Аятом (теперь нежно-голубой) */
         .quran-block { 
-            background-color: var(--deep-teal); 
-            color: #fff; 
+            background-color: var(--main-blue); 
+            color: var(--text-color); 
             padding: 50px 30px; 
             margin: 40px 0;
             line-height: 1.8;
             font-style: italic;
             font-family: 'Playfair Display', serif;
+            border-radius: 0;
+            box-shadow: inset 0 0 50px rgba(255,255,255,0.3);
         }
-        .quran-ref { display: block; margin-top: 15px; font-size: 0.8rem; letter-spacing: 2px; opacity: 0.8; }
+        .quran-ref { display: block; margin-top: 15px; font-size: 0.8rem; letter-spacing: 2px; opacity: 0.7; }
 
         /* Таймер */
         .timer-grid { display: flex; justify-content: center; gap: 15px; margin: 30px 0; }
-        .t-box { background: rgba(255,255,255,0.6); padding: 15px; border-radius: 5px; min-width: 65px; border: 1px solid var(--accent-blue); }
-        .t-num { font-size: 1.4rem; color: var(--deep-teal); display: block; }
+        .t-box { background: var(--white); padding: 15px; border-radius: 10px; min-width: 65px; border: 1px solid var(--main-blue); }
+        .t-num { font-size: 1.4rem; color: var(--gold); display: block; font-weight: 300; }
         .t-text { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; }
 
         /* Календарь */
-        .calendar { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .calendar { background: var(--white); padding: 25px; border-radius: 15px; border: 1px solid var(--main-blue); }
         .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: 15px; font-size: 0.8rem; }
         .heart { color: var(--gold); font-weight: bold; position: relative; }
-        .heart::after { content: "❤"; position: absolute; top: -8px; left: 50%; transform: translateX(-50%); opacity: 0.3; font-size: 1.8rem; }
+        .heart::after { content: "❤"; position: absolute; top: -8px; left: 50%; transform: translateX(-50%); opacity: 0.2; font-size: 1.8rem; }
 
-        .info-card { border-top: 1px solid var(--accent-blue); border-bottom: 1px solid var(--accent-blue); padding: 30px 0; margin: 40px 0; }
+        .info-card { border-top: 1px solid var(--main-blue); border-bottom: 1px solid var(--main-blue); padding: 30px 0; margin: 40px 0; }
+        
         .btn-confirm {
             position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
             width: 100%; max-width: 480px;
-            background: var(--deep-teal); color: white; border: none;
+            background: var(--main-blue); color: var(--text-color); border: none;
             padding: 20px; font-family: 'Montserrat'; letter-spacing: 3px;
             font-size: 0.9rem; z-index: 100; cursor: pointer;
+            font-weight: 400; border-top: 1px solid rgba(255,255,255,0.5);
         }
 
         h2 { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--gold); letter-spacing: 3px; }
@@ -95,17 +100,17 @@
 
     <div class="section reveal">
         <div class="info-card">
-            <p style="font-size: 1.1rem; line-height: 1.6;">Приглашаем вас на наш<br><strong>Никах</strong></p>
+            <p style="font-size: 1.1rem; line-height: 1.6; letter-spacing: 1px;">Приглашаем вас на наш<br><strong>НИКАХ</strong></p>
         </div>
     </div>
 
     <div class="quran-block reveal">
-        <h2 style="color: white; margin-bottom: 20px;">Этот момент настал!</h2>
-        "Среди Его знамений — то, что Он сотворил из вас самих жен для вас, чтобы вы находили в них успокоение, и установил между вами любовь и милосердие. Воистину, в этом — знамения для людей размышляющих."
-        <span class="quran-ref">(30:21)</span>
+        "Среди Его знамений — то, что Он сотворил из вас самих жен для вас, чтобы вы находили в них успокоение, и установил между вами любовь и милосердие."
+        <span class="quran-ref">(Коран, 30:21)</span>
     </div>
 
     <div class="section reveal">
+        <h2 style="margin-bottom: 20px;">До торжества осталось:</h2>
         <div class="timer-grid">
             <div class="t-box"><span id="d" class="t-num">00</span><span class="t-text">дней</span></div>
             <div class="t-box"><span id="h" class="t-num">00</span><span class="t-text">часов</span></div>
@@ -115,9 +120,9 @@
 
     <div class="section reveal">
         <div class="calendar">
-            <h2 style="margin-bottom: 20px;">Июнь 2026</h2>
+            <h2 style="margin-bottom: 20px; color: var(--text-color);">Июнь 2026</h2>
             <div class="cal-grid">
-                <div style="opacity: 0.5;">ПН</div><div style="opacity: 0.5;">ВТ</div><div style="opacity: 0.5;">СР</div><div style="opacity: 0.5;">ЧТ</div><div style="opacity: 0.5;">ПТ</div><div style="opacity: 0.5;">СБ</div><div style="opacity: 0.5;">ВС</div>
+                <div style="opacity: 0.4;">ПН</div><div style="opacity: 0.4;">ВТ</div><div style="opacity: 0.4;">СР</div><div style="opacity: 0.4;">ЧТ</div><div style="opacity: 0.4;">ПТ</div><div style="opacity: 0.4;">СБ</div><div style="opacity: 0.4;">ВС</div>
                 <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
                 <div>8</div><div>9</div><div>10</div><div class="heart">11</div><div>12</div><div>13</div><div>14</div>
                 <div>15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div><div>21</div>
@@ -129,7 +134,7 @@
     <div class="section reveal">
         <p style="font-size: 0.7rem; letter-spacing: 3px; opacity: 0.6;">ГОРОД КАЗАНЬ</p>
         <p style="font-size: 1.4rem; margin: 15px 0; font-weight: 300;">МЕЧЕТЬ «ИРЕК»</p>
-        <p style="color: var(--gold); font-size: 1.2rem;">17:00</p>
+        <p style="color: var(--gold); font-size: 1.2rem;">Начало в 17:00</p>
     </div>
 
     <div class="section reveal" style="padding-bottom: 100px;">
@@ -141,7 +146,6 @@
 </div>
 
 <script>
-    // Таймер до 11 июня 2026
     const target = new Date('June 11, 2026 17:00:00').getTime();
     function update() {
         const now = new Date().getTime();
@@ -154,7 +158,6 @@
     }
     setInterval(update, 1000); update();
 
-    // Анимация прокрутки
     const obs = new IntersectionObserver((entries) => {
         entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
     }, {threshold: 0.1});
